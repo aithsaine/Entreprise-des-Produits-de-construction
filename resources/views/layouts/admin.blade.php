@@ -76,13 +76,13 @@
             <p class="menu-label">Produits</p>
             <ul class="menu-list">
                 <li class="">
-                    <a href="">
+                    <a href={{route("admin.products.index")}}>
                         <span class="icon"><i class="mdi mdi-table"></i></span>
                         <span class="menu-item-label">Les Produits</span>
                     </a>
                 </li>
                 <li class="">
-                    <a href="">
+                    <a href={{route("admin.products.create")}}>
                         <span class="icon"><i class="mdi mdi-table"></i></span>
                         <span class="menu-item-label">Ajouter Produits</span>
                     </a>
