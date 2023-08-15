@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\CommandeController;
 use App\Http\Controllers\Admin\ProductController;
 
 /*
@@ -28,4 +29,9 @@ Route::controller(ProductController::class)->group(function()
 {
     Route::get("/products","index")->name("admin.products.index");
     Route::get("/product/create","create")->name("admin.products.create");
+    Route::post("/product/store",'store')->name("admin.products.store");
+});
+Route::controller(CommandeController::class)->group(function()
+{
+    Route::get("/commande/{client}/create","create")->name("admin.commande.create");
 });

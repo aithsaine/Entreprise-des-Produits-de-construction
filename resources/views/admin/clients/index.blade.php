@@ -19,7 +19,7 @@
                     <div class="font-semibold text-center">numero de tele</div>
                 </th>
                 <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-center">buttons</div>
+                    <div class="font-semibold text-center">Actions</div>
                 </th>
             </tr>
         </thead>
@@ -37,15 +37,15 @@
                         </div>
                         </div>
                     </td>
-                    <td data-label="le post" class="p-2 whitespace-nowrap ">
+                    <td data-label="Numero de telephone" class="p-2 whitespace-nowrap ">
                         <div class="text-center">{{ $client->tele ?? '---' }}</div>
                     </td>
-                    <td data-label="actions" class="p-2 whitespace-nowrap lg:flex lg:justify-center ">
+                    <td data-label="Actions" class="p-2 whitespace-nowrap lg:flex lg:justify-center ">
                         <div class="none">
-                            <button class="flex items-center space-x-2 p-1 text-xs bg-sky-200 rounded-lg">
+                            <a class="flex items-center space-x-2 p-1 text-xs bg-sky-200 rounded-lg" href={{route("admin.commande.create",$client->id)}}>
                                 <i class="fas fa-plus"></i> <!-- Replace with your icon's HTML -->
                                 <span> commander</span>
-                            </button>
+                            </a>
                         </div>
                     </td>
                 </tr>

@@ -18,4 +18,22 @@ class ProductController extends Controller
     {
         return view("admin.products.create");
     }
+    public function store(Request $request)
+    {
+        $request->validate([
+            "designation"=>"required",
+            "stock"=>"required",
+            "image"=>"required|mimes:png,jpg,webp,jpeg",
+        ]);
+        $image = $request->file("image");
+        $name = uniqid().".".$image->getClientOriginalExtension();
+        $image->storeAs("public/products",$name);
+        Product::create([
+            "designation"=>$request->designation,
+            "description"=>$request->description,
+            "image"=>$name,
+            "stock"=>$request->stock
+        ]);
+        return back()->with("success_msg","le produit est ajoute avec success");
+    }
 }

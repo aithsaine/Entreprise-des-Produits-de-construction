@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
     <meta name="description" content="Admin One - free Tailwind dashboard">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130795909-1"></script>
     <script>
@@ -21,6 +23,12 @@
         gtag('js', new Date());
         gtag('config', 'UA-130795909-1');
     </script>
+    <style>
+        *{
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem
+        }
+    </style>
 </head>
 <body>
 <div id="app">
