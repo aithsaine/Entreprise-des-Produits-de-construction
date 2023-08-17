@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreign("product_id")->references("id")->on("products");
             $table->float("price");
             $table->float("quantity");
-            $table->string("unite");
             $table->unsignedBigInteger("commande_id");
             $table->foreign("commande_id")->references("id")->on("commandes");
             $table->timestamps();
