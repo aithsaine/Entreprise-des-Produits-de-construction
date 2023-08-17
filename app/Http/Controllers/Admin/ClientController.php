@@ -29,7 +29,7 @@ class ClientController extends Controller
             "cin" => $request->cin,
             "first_name" => $request->first_name,
             "last_name" => $request->last_name,
-            "tele" => $request->tele,
+            "tele" => $request->phone,
             'description' => $request->description
         ]);
         return back()->with("success_msg","le client est ajoute avec success");

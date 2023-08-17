@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Product extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $fillable = ["designation","description","image","stock","unite"];
+    protected $fillable = ["designation","description","image","stock","unite","price"];
     protected function designation(): Attribute
     {
         return Attribute::make(

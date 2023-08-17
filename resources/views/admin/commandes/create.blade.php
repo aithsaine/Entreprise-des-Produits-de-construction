@@ -9,7 +9,8 @@
             </div>
             <div> <span class="font-bold">Date :</span> <span class="underline ">{{ $today }}</span></div>
         </div>
-        <form action="" method="post">
+        <form action={{route("admin.commande.commander",$client->id)}} method="post">
+            @csrf
             <table class="m-4">
                 <thead>
                     <tr>
@@ -26,16 +27,11 @@
                             </td>
                             <td>{{ $product->designation }}</td>
                             <td>
-                                <select name="" id="">
-                                    <option value="">Choisie une unite</option>
-                                    <option value="">KG</option>
-                                    <option value="">VGE</option>
-                                    <option value="">U</option>
-                                </select>
+                                {{$product->unite}}
                             </td>
-                            <td><input class="border-2 rounded border-sky-600" class="numberInput"
+                            <td><input name={{"qte_".$product->id}} class="border-2 rounded border-sky-600" class="numberInput"
                                     oninput="validateInput(this)" type="text"></td>
-                            <td><input class="border-2 rounded border-sky-600" type="text"></td>
+                            <td><input value="{{$product->price}}" name={{"pu_".$product->id}} class="border-2 rounded border-sky-600 text-center" type="text"></td>
                         </tr>
                     @endforeach
                 </tbody>

@@ -24,7 +24,8 @@ class ProductController extends Controller
             "designation"=>"required",
             "stock"=>"required",
             "image"=>"required|mimes:png,jpg,webp,jpeg",
-            "unite"=>"required"
+            "unite"=>"required",
+            "price"=>'required|gt:0'
         ]);
         $image = $request->file("image");
         $name = uniqid().".".$image->getClientOriginalExtension();
@@ -34,7 +35,8 @@ class ProductController extends Controller
             "description"=>$request->description,
             "image"=>$name,
             "stock"=>$request->stock,
-            "unite"=>$request->unite
+            "unite"=>$request->unite,
+            "price"=>$request->price
         ]);
         return back()->with("success_msg","le produit est ajoute avec success");
     }

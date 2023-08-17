@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("image");
             $table->string("unite");
             $table->integer("stock");
+            $table->float("price");
             $table->softDeletes();
             $table->timestamps();
         });

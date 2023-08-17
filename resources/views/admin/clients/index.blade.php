@@ -38,7 +38,7 @@
                         </div>
                     </td>
                     <td data-label="Numero de telephone" class="p-2 whitespace-nowrap ">
-                        <div class="text-center">{{ $client->tele ?? '---' }}</div>
+                        <div class="text-center">{{ $client->tele?$client->tele: '---' }}</div>
                     </td>
                     <td data-label="Actions" class="p-2 whitespace-nowrap lg:flex lg:justify-center ">
                         <div class="none">

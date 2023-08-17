@@ -66,12 +66,12 @@
             <div class="w-full lg:w-6/12 px-4">
                 <div class="relative w-full mb-3">
                     <label class="text-lg block uppercase text-blueGray-600 text-xs  mb-2" htmlfor="grid-password">
-                        Image
+                        Prix Unitaire
                     </label>
-                    <input type="file" name="image"
+                    <input type="text" name="price"
                         class=" border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-gray-600"
-                        value="{{ old('image') }}">
-                    @error('image')
+                        value="{{ old('price') }}">
+                    @error('price')
                         <div class="p-4 mb-4  text-red-500 rounded-lg bg-red-50 bg-inherit dark:text-red-400"
                             role="alert">
                             <span class="font-medium">{{ $message }}</span>
@@ -94,6 +94,22 @@
                         </div>
                     @enderror
                 </div>
+            </div>
+        </div>
+        <div class="w-full lg:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+                <label class="text-lg block uppercase text-blueGray-600 text-xs  mb-2" htmlfor="grid-password">
+                    Image
+                </label>
+                <input type="file" name="image"
+                    class=" border border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-gray-600"
+                    value="{{ old('image') }}">
+                @error('image')
+                    <div class="p-4 mb-4  text-red-500 rounded-lg bg-red-50 bg-inherit dark:text-red-400"
+                        role="alert">
+                        <span class="font-medium">{{ $message }}</span>
+                    </div>
+                @enderror
             </div>
         </div>
 

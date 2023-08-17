@@ -20,4 +20,11 @@ class CommandeController extends Controller
         return view("admin.commandes.create",compact("client","products","today"));
 
     }
+    public function commander(Request $request){
+        $products = [];
+        foreach($request->input() as $key=>$value){
+            if($key !== "_token")
+            echo $key." ==> ".$value."<br>";
+        }
+    }
 }
