@@ -33,6 +33,7 @@ Route::controller(ProductController::class)->group(function()
 });
 Route::controller(CommandeController::class)->group(function()
 {
+    Route::get("/commandes","index")->name("admin.commande.index");
     Route::get("/commande/{client}/create","create")->name("admin.commande.create");
     Route::post("/commande/commander/{client}",'commander')->name("admin.commande.commander");
 });
