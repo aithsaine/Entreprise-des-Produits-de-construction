@@ -46,7 +46,7 @@
 <body>
     <div id="app">
 
-        <nav id="navbar-main" class="navbar is-fixed-top">
+        {{-- <nav id="navbar-main" class="navbar is-fixed-top">
             <div class="navbar-brand">
                 <a class="navbar-item mobile-aside-button">
                     <span class="icon"><i class="mdi mdi-forwardburger mdi-24px"></i></span>
@@ -61,7 +61,7 @@
                     <span class="icon"><i class="mdi mdi-logout"></i></span>
                 </a>
             </div>
-        </nav>
+        </nav> --}}
 
         <aside class="aside is-placed-left is-expanded">
             <div class="aside-tools">

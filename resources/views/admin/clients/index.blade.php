@@ -21,6 +21,9 @@
                 <th class="p-2 whitespace-nowrap">
                     <div class="font-semibold text-center">TOTAL MARCHANDISES</div>
                 </th>
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-center">TOTAL DES AVANCES</div>
+                </th>
                 
                 <th class="p-2 whitespace-nowrap">
                     <div class="font-semibold text-center">ACTIONS</div>
@@ -46,6 +49,9 @@
                     </td>
                     <td data-label="Numero de telephone" class="p-2 whitespace-nowrap ">
                         <div class="text-center">{{ $client->purchases() }} DH</div>
+                    </td>
+                    <td data-label="Numero de telephone" class="p-2 whitespace-nowrap ">
+                        <div class="text-center">0</div>
                     </td>
                     <td data-label="Actions" class="p-2 whitespace-nowrap lg:flex lg:justify-center ">
                         <div class="none">
