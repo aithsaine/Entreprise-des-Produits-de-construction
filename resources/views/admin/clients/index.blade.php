@@ -13,13 +13,17 @@
         <thead class="text-xs font-semibold uppercase text-gray-400 bg-gray-50">
             <tr>
                 <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-left">Nom Compléte</div>
+                    <div class="font-semibold text-left">NOM COMPLET</div>
                 </th>
                 <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-center">numero de tele</div>
+                    <div class="font-semibold text-center">NUMERO TELEPHONE</div>
                 </th>
                 <th class="p-2 whitespace-nowrap">
-                    <div class="font-semibold text-center">Actions</div>
+                    <div class="font-semibold text-center">TOTAL MARCHANDISES</div>
+                </th>
+                
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-center">ACTIONS</div>
                 </th>
             </tr>
         </thead>
@@ -39,6 +43,9 @@
                     </td>
                     <td data-label="Numero de telephone" class="p-2 whitespace-nowrap ">
                         <div class="text-center">{{ $client->tele?$client->tele: '---' }}</div>
+                    </td>
+                    <td data-label="Numero de telephone" class="p-2 whitespace-nowrap ">
+                        <div class="text-center">{{ $client->purchases() }} DH</div>
                     </td>
                     <td data-label="Actions" class="p-2 whitespace-nowrap lg:flex lg:justify-center ">
                         <div class="none">

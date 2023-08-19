@@ -22,5 +22,10 @@ class Commande extends Model
     public function dateCommande()
     {
         Carbon::setLocale('fr');
-        return Carbon::createFromFormat("Y-m-d H:i:s",$this->attributes["created_at"])->format("d/m/Y");
-}}
+        return Carbon::createFromFormat("Y-m-d H:i:s", $this->attributes["created_at"])->format("d/m/Y");
+    }
+    public function transport()
+    {
+        return $this->hasOne(Transport::class);
+    }
+  }

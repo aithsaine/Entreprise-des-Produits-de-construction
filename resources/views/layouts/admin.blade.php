@@ -3,10 +3,12 @@
 
 <head>
     @vite('resources/css/app.css')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content={{csrf_token()}}>
     <title>Dashboard - Admin One Tailwind CSS Admin Dashboard</title>
     <!-- Tailwind is included -->
     <link rel="stylesheet" href="{{ asset('./assets/css/main.css?v=1628755089081') }}">
@@ -65,7 +67,7 @@
             <div class="aside-tools">
                 <div class="flex items-center">
                     <img width="50" class="mt-2" src={{ asset('assets/imgs/logo.png') }} alt=""> <b
-                        class="font-black flex text-center text-sky-200">EL AZZOUZI FER SARL</b>
+                        class="font-black flex text-center text-sky-200 p-4 ">RAB SAL</b>
                 </div>
             </div>
             <div class="menu is-menu-main">

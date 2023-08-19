@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\CommandeController;
 use App\Http\Controllers\Admin\ProductController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,5 @@ Route::controller(CommandeController::class)->group(function()
     Route::get("/commandes","index")->name("admin.commande.index");
     Route::get("/commande/{client}/create","create")->name("admin.commande.create");
     Route::post("/commande/commander/{client}",'commander')->name("admin.commande.commander");
+    Route::get("/commande/{commande}/print","print")->name("admin.commande.print");
 });
