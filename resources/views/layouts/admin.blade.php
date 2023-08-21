@@ -120,6 +120,16 @@
                     </li>
 
                 </ul>
+                <p class="menu-label">Payments</p>
+                <ul class="menu-list">
+                    <li class="">
+                        <a href={{ route('admin.commande.index') }}>
+                            <span class="icon"><i class="mdi mdi-table"></i></span>
+                            <span class="menu-item-label">Les Payment</span>
+                        </a>
+                    </li>
+
+                </ul>
 
             </div>
         </aside>
@@ -175,7 +185,42 @@
     <script type="text/javascript" src={{ asset('assets/js/chart.sample.min.js') }}></script>
 
 
-    <script></script>
+    <script>
+        // Open the modal when the trigger button is clicked
+        const modalTrigger = document.querySelector('[data-modal-target="#modal"]');
+        const modal = document.querySelector('#modal');
+        const close = document.getElementById("close")
+        if (modalTrigger) {
+
+            modalTrigger.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+            });
+        }
+
+        // Close the modal when the user clicks outside of it
+        if (close) {
+
+            close.addEventListener('click', event => {
+                modal.classList.add('hidden');
+            });
+        }
+        let closeBtn = document.getElementById("close-alert");
+        let success_alert = document.getElementById("success-alert")
+        let fail_alert = document.getElementById("fail-alert")
+        if (closeBtn) {
+            if (success_alert) {
+
+                closeBtn.addEventListener("click", function() {
+                    success_alert.style.display = "none";
+                });
+            } else {
+
+                closeBtn.addEventListener("click", function() {
+                    fail_alert.style.display = "none";
+                });
+            }
+        }
+    </script>
     @yield('script')
 
     <!-- Icons below are for demo only. Feel free to use any icon pack. Docs: https://bulma.io/documentation/elements/icon/ -->

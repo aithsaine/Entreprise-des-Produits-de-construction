@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Commande extends Model
 {
     use HasFactory;
-    protected $fillable = ["client_id"];
+    protected $fillable = ["client_id","date"];
     public function items()
     {
         return $this->hasMany(Item::class);
@@ -21,8 +21,7 @@ class Commande extends Model
 
     public function dateCommande()
     {
-        Carbon::setLocale('fr');
-        return Carbon::createFromFormat("Y-m-d H:i:s", $this->attributes["created_at"])->format("d/m/Y");
+        return $this->attributes["date"];
     }
     public function transport()
     {

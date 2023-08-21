@@ -30,13 +30,15 @@ class CommandeController extends Controller
     public function create($client)
     {
         $client = Client::find($client);
-        $products = Product::all();
-        Carbon::setLocale('fr');
-        $today = Carbon::today()->translatedFormat('l jS F Y');
+        $products = Product::orderBy("designation")->get();
+        $today = Carbon::today()->format('Y-m-d');
         return view("admin.commandes.create", compact("client", "products", "today"));
     }
     public function commander(Request $request, $client)
     {
+        $request->validate([
+            "date"=>"required|date"
+        ]);
         $qts = [];
         $pus = [];
         foreach ($request->input() as $key => $value) {
@@ -50,6 +52,7 @@ class CommandeController extends Controller
         if (count($qts) >= 1) {
             $commande = new Commande();
             $commande->client_id = $client;
+            $commande->date = $request->date;
             $commande->save();
             if ($request->transport > 0) {
                 Transport::create([
@@ -72,8 +75,9 @@ class CommandeController extends Controller
                 } catch (Exception $er) {
                 }
             }
+            return back()->with("success_msg", "la commande est crier avec success");
         }
-        return back()->with("success_msg", "la commande est crier avec success");
+        return back()->with("error_msg","tu doit choisie au minimum un produit");
     }
 
     public function print($commande)
