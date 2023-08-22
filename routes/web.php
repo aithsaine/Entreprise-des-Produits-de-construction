@@ -25,6 +25,8 @@ Route::controller(ClientController::class)->group(function(){
     Route::get("/clients","index")->name("admin.clients.index");
     Route::get("/client/create","create")->name("admin.client.create") ;
     Route::post("/client/create","store")->name("admin.client.store");
+    Route::get("/client/{client_id}/situation","situation")->name("admin.client.situation");
+
 });
 Route::controller(ProductController::class)->group(function()
 {

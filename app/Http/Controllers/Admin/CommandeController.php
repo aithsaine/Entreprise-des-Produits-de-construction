@@ -97,4 +97,7 @@ class CommandeController extends Controller
         $pdf = Pdf::loadView('admin.commandes.commande', compact("cmd", "total"));
         return $pdf->stream("RABSAL COMMANDE N° {$commande}.pdf");
     }
+
+
+  
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Commande;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -33,5 +34,11 @@ class ClientController extends Controller
             'description' => $request->description
         ]);
         return back()->with("success_msg","le client est ajoute avec success");
+    }
+    public function situation($client_id)
+    {
+        $commandes = Commande::where("client_id",$client_id);
+        return view("admin.commandes.situation",compact("commandes"));
+
     }
 }

@@ -1,7 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class=" justify-center min-h-screen bg-gray-100">
+<section class="is-title-bar relative">
+
+<div class="flex flex-col md:flex-row items-center justify-between  md:space-y-0">
+    <ul>
+        <li>Clients</li>
+        <li>Commandes</li>
+    </ul>
+
+  
+</div>
+    <div class=" justify-center min-h-screen bg-gray-100 rounded mt-4">
 
 
 
@@ -139,6 +149,7 @@
                 </fieldset>
             @endforeach
         </div>
+    </section>
     @endsection
 
     @section('script')
