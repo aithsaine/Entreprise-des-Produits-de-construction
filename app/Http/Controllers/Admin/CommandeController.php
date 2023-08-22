@@ -18,14 +18,24 @@ use App\Http\Controllers\Controller;
 class CommandeController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
+        $client_id = $request->client ?? -1;
         $commandes = Commande::all();
+        if ($request->has("client")) {
+            $commandes = Commande::where("client_id", $client_id)->get();
+            if ($request->client == -1) {
+                $commandes = Commande::all();
+            }
+        }
+
+
+        $clients = Client::all();
         $totals = [];
         foreach ($commandes as $cmd) {
             $totals[$cmd->id] = (array_reduce(array_map(fn ($elem) => $elem['quantity'] * $elem['price'], $cmd->items->toArray()), fn ($prev, $next) => $prev + $next));
         }
-        return view("admin.commandes.index", compact("commandes", "totals"));
+        return view("admin.commandes.index", compact("commandes", "totals", "clients", "client_id"));
     }
     public function create($client)
     {
@@ -37,7 +47,7 @@ class CommandeController extends Controller
     public function commander(Request $request, $client)
     {
         $request->validate([
-            "date"=>"required|date"
+            "date" => "required|date"
         ]);
         $qts = [];
         $pus = [];
@@ -77,14 +87,14 @@ class CommandeController extends Controller
             }
             return back()->with("success_msg", "la commande est crier avec success");
         }
-        return back()->with("error_msg","tu doit choisie au minimum un produit");
+        return back()->with("error_msg", "tu doit choisie au minimum un produit");
     }
 
     public function print($commande)
     {
         $cmd = Commande::find($commande);
-        $total = array_reduce(array_map(fn($elem)=>$elem['quantity']*$elem['price'],$cmd->items->toArray()),fn($prev,$next)=>$prev+$next);
-        $pdf = Pdf::loadView('admin.commandes.commande',compact("cmd","total"));
-        return $pdf->stream("RABSAL COMMANDE N° {$commande}.pdf");    
+        $total = array_reduce(array_map(fn ($elem) => $elem['quantity'] * $elem['price'], $cmd->items->toArray()), fn ($prev, $next) => $prev + $next);
+        $pdf = Pdf::loadView('admin.commandes.commande', compact("cmd", "total"));
+        return $pdf->stream("RABSAL COMMANDE N° {$commande}.pdf");
     }
 }

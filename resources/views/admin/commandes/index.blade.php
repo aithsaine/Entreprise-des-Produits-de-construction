@@ -4,7 +4,40 @@
     <div class=" justify-center min-h-screen bg-gray-100">
 
 
+
         <div class="w-full p-4">
+            <form onsubmit="" style="box-shadow: 2px 2px 2px gray" className="bg-white p-6 rounded-lg shadow-md">
+                <div class="flex">
+                    <div class="w-1/2">
+                        <label html="email" class="block text-lg text-gray-700 font-bold mb-2">
+                            Client
+                        </label>
+                        <select
+                        
+                        id="client_id"
+                            class="bg-gray-50   text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 text-gray-600">
+                            <option value="-1">Selectionner Le Client</option>
+                            @foreach($clients as $cl )
+                            <option 
+                            value={{$cl->id}}
+                               >{{$cl->first_name." ".$cl->last_name}}
+                            </option>
+                            @endforeach
+                            <option value="-1">Tout</option>
+                        </select>
+                    </div>
+                    <div class="w-1/2">
+                        <label html="date" class="block text-gray-700 font-bold mb-2">
+                            &nbsp;
+                        </label>
+                        <button type="button"
+                        id="btn-search"
+                            class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2">
+                            Chercher
+                        </button>
+                    </div>
+                </div>
+            </form>
             @foreach ($commandes as $commande)
                 <fieldset class="border-2 border-sky-800 shadow m-5 p-5  rounded">
                     <legend class="ms-5 p-2">
@@ -109,5 +142,11 @@
     @endsection
 
     @section('script')
-        <script></script>
+        <script>
+            let btn = document.getElementById("btn-search");
+            client_id_input = document.getElementById("client_id")
+            btn.addEventListener('click',()=>{
+                window.location.href = `http://localhost:8000/commandes?client=${client_id_input.value}`
+            })
+        </script>
     @endsection
