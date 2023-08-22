@@ -144,7 +144,8 @@
                     </table>
                     <div class="p-2">
 
-                        <a href="{{ route('admin.commande.print', $commande->id) }}"><i class="fas fa-print mr-2"></i> </a>
+                        <a href="{{ route('admin.commande.print', $commande->id) }}"><i class="mdi mdi-printer"></i>
+                        </a>
                     </div>
                 </fieldset>
             @endforeach

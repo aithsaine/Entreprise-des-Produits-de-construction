@@ -75,7 +75,8 @@
                 <ul class="menu-list">
                     <li class="">
                         <a href="#">
-                            <span class="icon"><i class="mdi mdi-desktop-mac"></i></span>
+                            <span class="icon"><i class="mdi mdi-chart-bar"></i>
+                            </span>
                             <span class="menu-item-label">Tableau de bord</span>
                         </a>
                     </li>
@@ -90,7 +91,8 @@
                     </li>
                     <li class="">
                         <a href={{ route('admin.client.create') }}>
-                            <span class="icon"><i class="mdi mdi-square-edit-outline"></i></span>
+                            <span class="icon"><i class="mdi mdi-account-multiple-plus"></i>
+                            </span>
                             <span class="menu-item-label">Ajouter Client</span>
                         </a>
                     </li>
@@ -123,7 +125,7 @@
                 <p class="menu-label">Payments</p>
                 <ul class="menu-list">
                     <li class="">
-                        <a href={{ route('admin.commande.index') }}>
+                        <a href={{ route('admin.payments.index') }}>
                             <span class="icon"><i class="mdi mdi-table"></i></span>
                             <span class="menu-item-label">Les Payment</span>
                         </a>

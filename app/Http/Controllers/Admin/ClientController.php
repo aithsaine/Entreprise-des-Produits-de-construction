@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Commande;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Http\Controllers\Controller;
 
 class ClientController extends Controller
 {
@@ -37,8 +38,18 @@ class ClientController extends Controller
     }
     public function situation($client_id)
     {
-        $commandes = Commande::where("client_id",$client_id);
-        return view("admin.commandes.situation",compact("commandes"));
+        $client = Client::find($client_id);
+        $commandes = Commande::where("client_id",$client_id)->orderBy("date")->get();
+        return view("admin.commandes.situation",compact("commandes","client"));
+
+    }
+
+    public function printSituation($client_id)
+    {
+        $client = Client::find($client_id);
+        $commandes = Commande::where("client_id",$client_id)->get();
+        $pdf = Pdf::loadView('admin.commandes.downloadSituation', compact("client", "commandes"));
+        return $pdf->download("$client->first_name $client->last_name.pdf");
 
     }
 }

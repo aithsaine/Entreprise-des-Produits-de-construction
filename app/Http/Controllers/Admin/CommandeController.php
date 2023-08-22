@@ -21,7 +21,7 @@ class CommandeController extends Controller
     public function index(Request $request)
     {
         $client_id = $request->client ?? -1;
-        $commandes = Commande::all();
+        $commandes = Commande::orderBy("client_id")->orderBy("date")->get();
         if ($request->has("client")) {
             $commandes = Commande::where("client_id", $client_id)->get();
             if ($request->client == -1) {

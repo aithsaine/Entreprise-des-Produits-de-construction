@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Payment extends Model
 {
     use HasFactory;
-    protected $fillable = ["client_id","date"];
+    protected $fillable = ["client_id","date","amount"];
 
     public function check()
     {
@@ -17,5 +17,9 @@ class Payment extends Model
     public function cash()
     {
         return $this->hasOne(Cash::class);
+    }
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
     }
 }

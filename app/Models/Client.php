@@ -28,4 +28,15 @@ class Client extends Model
         }
         return $total;
     }
+
+    public function avancements()
+    {
+        $total = 0;
+        $payments = Payment::where("client_id",$this->attributes["id"])->get();
+        foreach($payments as $payment){
+            $total+=$payment->amount;
+
+        }
+        return $total;
+    }
 }

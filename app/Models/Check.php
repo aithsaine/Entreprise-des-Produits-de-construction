@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Check extends Model
 {
     use HasFactory;
-    protected $fillable = ["payment_id","amount","number"];
+    protected $fillable = ["payment_id","number"];
     public function payment()
     {
         return $this->belongsTo(Payment::class);

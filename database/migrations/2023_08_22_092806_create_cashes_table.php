@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('checks', function (Blueprint $table) {
+        Schema::create('cashes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("payment_id");
-            $table->float("amount");
             $table->foreign("payment_id")->references("id")->on("payments");
-            $table->string("number")->unique();
             $table->timestamps();
         });
     }
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('checks');
+        Schema::dropIfExists('cashes');
     }
 };

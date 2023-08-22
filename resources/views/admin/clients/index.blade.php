@@ -57,7 +57,7 @@
                         <div class="text-center">{{ $client->purchases() }} DH</div>
                     </td>
                     <td data-label="Numero de telephone" class="p-2 whitespace-nowrap ">
-                        <div class="text-center">0  </div>
+                        <div class="text-center">{{$client->avancements()}} Dh </div>
                     </td>
                     <td data-label="Actions" class="p-2 whitespace-nowrap lg:flex lg:justify-center ">
                         <div class="none">

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\CommandeController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,7 @@ Route::controller(ClientController::class)->group(function(){
     Route::get("/client/create","create")->name("admin.client.create") ;
     Route::post("/client/create","store")->name("admin.client.store");
     Route::get("/client/{client_id}/situation","situation")->name("admin.client.situation");
+    Route::get("/client/{client_id}/situation/download","printSituation")->name("admin.client.situation.print");
 
 });
 Route::controller(ProductController::class)->group(function()
@@ -40,4 +42,10 @@ Route::controller(CommandeController::class)->group(function()
     Route::get("/commande/{client}/create","create")->name("admin.commande.create");
     Route::post("/commande/commander/{client}",'commander')->name("admin.commande.commander");
     Route::get("/commande/{commande}/print","print")->name("admin.commande.print");
+});
+
+Route::controller(PaymentController::class)->group(function(){
+    Route::get("/payments",'index')->name("admin.payments.index");
+    Route::post("payment/store","store")->name("admin.payment.store");
+
 });

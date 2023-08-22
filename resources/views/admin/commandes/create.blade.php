@@ -95,7 +95,7 @@
                         </tr>
                     @endforeach
                     <tr>
-                        <td colspan="4">Transport</td>
+                        <td colspan="4"><i style="font-size: 2rem" class="mdi mdi-ambulance"></i> Transport</td>
                         <td><input oninput="validateInput(this)" class="border-2 rounded border-sky-600 text-center" type="text" name="transport"
                                 value="{{ old('transport', 0) }}"></td>
                     </tr>
