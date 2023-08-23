@@ -40,20 +40,22 @@
             font-family: 'Merriweather', serif;
             font-family: 'Roboto Mono', monospace;
         }
+        aside,#navbar-main{
+            background-color: black !important;
+            color: white
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
 
-        {{-- <nav id="navbar-main" class="navbar is-fixed-top">
+         <nav id="navbar-main" class="navbar is-fixed-top">
             <div class="navbar-brand">
                 <a class="navbar-item mobile-aside-button">
                     <span class="icon"><i class="mdi mdi-forwardburger mdi-24px"></i></span>
                 </a>
-                <div class="navbar-item">
-                    <div class="control"><input placeholder="Search everywhere..." class="input"></div>
-                </div>
+                
             </div>
 
             <div class="-menu" id="navbar-menu">
@@ -61,16 +63,16 @@
                     <span class="icon"><i class="mdi mdi-logout"></i></span>
                 </a>
             </div>
-        </nav> --}}
+        </nav> 
 
         <aside class="aside is-placed-left is-expanded">
-            <div class="aside-tools">
+            <div class="p-4">
                 <div class="flex items-center">
                     <img width="50" class="mt-2" src={{ asset('assets/imgs/logo.png') }} alt=""> <b
                         class="font-black flex text-center text-sky-200 p-4 ">RAB SAL</b>
                 </div>
             </div>
-            <div class="menu is-menu-main">
+            <div class="menu is-menu-main ">
                 <p class="menu-label">General</p>
                 <ul class="menu-list">
                     <li class="">
@@ -85,7 +87,7 @@
                 <ul class="menu-list">
                     <li class="">
                         <a href={{ route('admin.clients.index') }}>
-                            <span class="icon"><i class="mdi mdi-table"></i></span>
+                            <span class="icon"><i class="mdi mdi-account"></i></span>
                             <span class="menu-item-label">List des Client</span>
                         </a>
                     </li>
@@ -101,13 +103,13 @@
                 <ul class="menu-list">
                     <li class="">
                         <a href={{ route('admin.products.index') }}>
-                            <span class="icon"><i class="mdi mdi-table"></i></span>
+                            <span class="icon"><i class="mdi mdi-basket"></i></span>
                             <span class="menu-item-label">Les Produits</span>
                         </a>
                     </li>
                     <li class="">
                         <a href={{ route('admin.products.create') }}>
-                            <span class="icon"><i class="mdi mdi-table"></i></span>
+                            <span class="icon"><i class="mdi mdi-plus-circle"></i></span>
                             <span class="menu-item-label">Ajouter Produits</span>
                         </a>
                     </li>
@@ -126,7 +128,7 @@
                 <ul class="menu-list">
                     <li class="">
                         <a href={{ route('admin.payments.index') }}>
-                            <span class="icon"><i class="mdi mdi-table"></i></span>
+                            <span class="icon"><i class="mdi mdi-cash"></i>                            </span>
                             <span class="menu-item-label">Les Payment</span>
                         </a>
                     </li>
@@ -135,48 +137,12 @@
 
             </div>
         </aside>
+    @yield('content')
+
+       
 
 
-
-
-        @yield('content')
-
-
-
-
-        <div id="sample-modal" class="modal">
-            <div class="modal-background --jb-modal-close"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Sample modal</p>
-                </header>
-                <section class="modal-card-body">
-                    <p>Lorem ipsum dolor sit amet <b>adipiscing elit</b></p>
-                    <p>This is sample modal</p>
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button --jb-modal-close" aria-label="close">Cancel</button>
-                    <button class="button red modal-close">Confirm</button>
-                </footer>
-            </div>
-        </div>
-
-        <div id="sample-modal-2" class="modal">
-            <div class="modal-background --jb-modal-close"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Sample modal</p>
-                </header>
-                <section class="modal-card-body">
-                    <p>Lorem ipsum dolor sit amet <b>adipiscing elit</b></p>
-                    <p>This is sample modal</p>
-                </section>
-                <footer class="modal-card-foot">
-                    <button class="button --jb-modal-close">Cancel</button>
-                    <button class="button blue --jb-modal-close">Confirm</button>
-                </footer>
-            </div>
-        </div>
+ 
     </div>
 
     <!-- Scripts below are for demo only -->

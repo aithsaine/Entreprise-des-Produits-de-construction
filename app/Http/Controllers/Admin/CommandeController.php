@@ -47,7 +47,8 @@ class CommandeController extends Controller
     public function commander(Request $request, $client)
     {
         $request->validate([
-            "date" => "required|date"
+            "date" => "required|date",
+            "bon"=>"required|regex:/\d/",
         ]);
         $qts = [];
         $pus = [];
@@ -63,6 +64,7 @@ class CommandeController extends Controller
             $commande = new Commande();
             $commande->client_id = $client;
             $commande->date = $request->date;
+            $commande->bon_number=$request->bon;
             $commande->save();
             if ($request->transport > 0) {
                 Transport::create([

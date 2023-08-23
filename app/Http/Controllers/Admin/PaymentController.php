@@ -13,7 +13,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        $payments = Payment::all();
+        $payments = Payment::orderBy("client_id")->orderBy("date")->get();
         $clients = Client::all();
         return view("admin.payments.index",compact("clients","payments"));
     }

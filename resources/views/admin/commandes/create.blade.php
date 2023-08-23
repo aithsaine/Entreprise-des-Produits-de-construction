@@ -68,16 +68,22 @@
             <div><span class="font-bold">Nom De Client :</span> <span
                     class="underline ">{{ $client->first_name . ' ' . $client->last_name }}</span>
             </div>
+
+            <div><span class="font-bold">Numero de Bon :</span> <span
+                class="underline "><input class="border-2 rounded border-sky-600 text-center" type="text" name="bon"  value={{old('bon')}}></span>
+        </div>
+
             <div> <span class="font-bold">Date :</span> <span class="underline "><input class="border-2 rounded border-sky-600 text-center" type="date" name="date" value={{$today}} id=""></span></div>
         </div>
+        <hr class=" m-4">
             @csrf
             <table class="m-4">
                 <thead>
                     <tr>
-                        <th class="text-left" colspan="2">designation</th>
-                        <th class="text-left">unite</th>
-                        <th class="text-left">quantite</th>
-                        <th class="text-left">prix unitaire</th>
+                        <th class="text-left " colspan="2">Designation</th>
+                        <th class="text-left ">Unite</th>
+                        <th class="text-left ">Quantite</th>
+                        <th class="text-left ">Prix Unitaire</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -118,5 +124,11 @@
                 input.value = input.value.replace(/\.+$/, '');
             }
         }
+        setInterval(()=>{
+            let close = document.getElementById("close-alert")
+            if(close    )
+            close.click()
+
+        },2000) 
     </script>
 @endsection

@@ -21,6 +21,7 @@
         <thead>
             <tr class="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
                 <th class="py-3 px-6 text-left">#</th>
+                <th class="py-3 px-6 text-left">Bon N°</th>
                 <th class="py-3 px-6 text-left">Date Commande</th>
                 <th class="py-3 px-6 text-left">Designation</th>
                 <th class="py-3 px-6 text-left">Unite</th>
@@ -36,6 +37,7 @@
             @php $nbr+=1 @endphp
             <tr class="border-b border-gray-200 hover:bg-gray-100 cursor-default">
                 <td class="py-3 px-6 text-left">{{$nbr}}</td>
+                <td class="py-3 px-6 text-left">{{$commande->bon_number }}</td>
                 <td class="py-3 px-6 text-left">{{$commande->dateCommande()}}</td>
                 <td class="py-3 px-6 text-left">{{$item->product->designation}}</td>
                 <td class="py-3 px-6 text-left">{{$item->product->unite}}</td>
@@ -44,6 +46,19 @@
                 <td class="py-3 px-6 text-left">{{$item->price * $item->quantity}} Dh</td>
             </tr>
             @endforeach
+            @if($commande->transport)
+            @php $nbr+=1 @endphp
+            <tr class="border-b border-gray-200 hover:bg-gray-100 cursor-default">
+                <td class="py-3 px-6 text-left">{{$nbr}}</td>
+                <td class="py-3 px-6 text-left">&nbsp;</td>
+                <td class="py-3 px-6 text-left">{{$commande->dateCommande()}}</td>
+                <td class="py-3 px-6 text-left">TRS</td>
+                <td class="py-3 px-6 text-left">--</td>
+                <td class="py-3 px-6 text-left">1</td>
+                <td class="py-3 px-6 text-left">{{$commande->transport->amount}}</td>
+                <td class="py-3 px-6 text-left">{{$commande->transport->amount}} Dh</td>
+            </tr>
+            @endif
             @endforeach
         </tbody>
         <hr>

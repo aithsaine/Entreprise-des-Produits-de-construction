@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Commande extends Model
 {
     use HasFactory;
-    protected $fillable = ["client_id","date"];
+    protected $fillable = ["client_id","date","bon_number"];
     public function items()
     {
         return $this->hasMany(Item::class);

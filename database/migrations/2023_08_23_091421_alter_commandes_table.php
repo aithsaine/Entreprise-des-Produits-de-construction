@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('commandes', function (Blueprint $table) {
-            $table->date("date");
+        Schema::table("commandes",function(Blueprint $table){
+            $table->string("bon_number")->after("id");
         });
     }
 
@@ -21,8 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('commandes', function (Blueprint $table) {
-            $table->dropColumn("date");
-        });
+        //
     }
 };

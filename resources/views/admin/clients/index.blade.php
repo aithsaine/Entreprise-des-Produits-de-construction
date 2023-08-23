@@ -30,7 +30,9 @@
                 <th class="p-2 whitespace-nowrap">
                     <div class="font-semibold text-center">TOTAL DES AVANCES</div>
                 </th>
-                
+                <th class="p-2 whitespace-nowrap">
+                    <div class="font-semibold text-center">LE REST</div>
+                </th>
                 <th class="p-2 whitespace-nowrap">
                     <div class="font-semibold text-center">ACTIONS</div>
                 </th>
@@ -58,6 +60,9 @@
                     </td>
                     <td data-label="Numero de telephone" class="p-2 whitespace-nowrap ">
                         <div class="text-center">{{$client->avancements()}} Dh </div>
+                    </td>
+                    <td data-label="le rest" class="p-2 whitespace-nowrap ">
+                        <div class="text-center">{{$client->purchases()-$client->avancements()}} Dh </div>
                     </td>
                     <td data-label="Actions" class="p-2 whitespace-nowrap lg:flex lg:justify-center ">
                         <div class="none">
