@@ -76,7 +76,7 @@
                 <p class="menu-label">General</p>
                 <ul class="menu-list">
                     <li class="">
-                        <a href="#">
+                        <a href={{route('admin.dashboard')}}>
                             <span class="icon"><i class="mdi mdi-chart-bar"></i>
                             </span>
                             <span class="menu-item-label">Tableau de bord</span>
@@ -138,11 +138,6 @@
             </div>
         </aside>
     @yield('content')
-
-       
-
-
- 
     </div>
 
     <!-- Scripts below are for demo only -->

@@ -7,6 +7,7 @@ use App\Models\Commande;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Http\Controllers\Controller;
+use App\Models\Payment;
 
 class ClientController extends Controller
 {
@@ -39,8 +40,9 @@ class ClientController extends Controller
     public function situation($client_id)
     {
         $client = Client::find($client_id);
+        $payments = Payment::where("client_id",$client_id)->orderBy("date")->get();
         $commandes = Commande::where("client_id",$client_id)->orderBy("date")->get();
-        return view("admin.commandes.situation",compact("commandes","client"));
+        return view("admin.commandes.situation",compact("commandes","client","payments"));
 
     }
 

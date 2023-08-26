@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\CommandeController;
@@ -48,4 +49,7 @@ Route::controller(PaymentController::class)->group(function(){
     Route::get("/payments",'index')->name("admin.payments.index");
     Route::post("payment/store","store")->name("admin.payment.store");
 
+});
+Route::controller(AdminController::class)->group(function(){
+    Route::get("admin/","index")->name("admin.dashboard");
 });

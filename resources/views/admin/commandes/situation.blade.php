@@ -17,6 +17,7 @@
     </div>
     <div class="w-full p-4">
         <div class="bg-white shadow-md rounded-lg overflow-x-auto">
+            <h1 class="text-sky-800 text-lg p-4">Les Marchandise : </h1>
             <table class="min-w-full">
         <thead>
             <tr class="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
@@ -72,6 +73,72 @@
     </table>
         </div>
     </div>
+
+    {{-- les avancements --}}
+
+    <div class="w-full p-4">
+        <div class="bg-white shadow-md rounded-lg overflow-x-auto">
+            <h1 class="text-sky-800 text-lg p-4">Les Avancements : </h1>
+            <table class="min-w-full">
+        <thead>
+            <tr class="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
+                <th class="py-3 px-6 text-left">#</th>
+                <th class="py-3 px-6 text-left">Date D'Avancement</th>
+                <th class="py-3 px-6 text-left">Numero de Check</th>
+                <th class="py-3 px-6 text-left">Type</th>
+                <th class="py-3 px-6 text-left">Montant</th>
+            </tr>
+        </thead>
+        <tbody class="text-gray-700 text-sm font-light">
+            @foreach($payments as $index=>$payment)
+            <tr class="border-b border-gray-200 hover:bg-gray-100 cursor-default">
+                <td class="py-3 px-6 text-left">{{$index + 1}}</td>
+                <td class="py-3 px-6 text-left">{{$payment->date}}</td>
+                <td class="py-3 px-6 text-left">{{$payment->check?$payment->check->number:"--"}}</td>
+                <td class="py-3 px-6 text-left">{{$payment->check?"Chéque":"Espece"}}</td>
+                <td class="py-3 px-6 text-left">{{$payment->amount}} Dh</td>
+            </tr>
+            @endforeach
+        </tbody>
+        <hr>
+        <tfoot>
+            <tr class="border-2">
+                <th colspan="4">Total D'avancements</th>
+                <th>{{$client->purchases()}} Dh</th>
+            </tr>
+        </tfoot>
+
+    </table>
+        </div>
+    </div>
+    <hr class="p-2">
+    <div class="w-full p-4">
+        <div class="bg-white shadow-md rounded-lg overflow-x-auto">
+
+    <table>
+        <thead>
+            <tr class="bg-gray-200 text-gray-700 uppercase text-sm leading-normal">
+                
+                <th class="py-3 px-6 text-left"></th>
+                <th class="py-3 px-6 text-left"></th>
+                <th class="py-3 px-6 text-left"></th>
+                <th class="py-3 px-6 text-left"></th>
+                <th class="py-3 px-6 text-left"></th>
+                <th class="py-3 px-6 text-left"></th>
+                <th class="py-3 px-6 text-left"></th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+    <tfoot>
+        <tr class="border-2">
+            <th colspan="6">Le Rest</th>
+            <th>{{$client->purchases() - $client->avancements()}} Dh</th>
+        </tr>
+    </tfoot>
+</table>
+        </div></div>
 </section>
 @endsection
 @section('script')

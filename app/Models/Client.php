@@ -39,4 +39,5 @@ class Client extends Model
         }
         return $total;
     }
+    
 }
