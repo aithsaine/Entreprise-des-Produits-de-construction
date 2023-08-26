@@ -13,17 +13,22 @@
             <table class="m-4">
                 <thead>
                     <tr>
-                        <th class="text-left" colspan="2">designation</th>
-                        <th class="text-left">Stock</th>
+                        <th class="text-left" >DESIGNATION</th>
+                        <th class="text-left">STOCK</th>
+                        <th class="text-left">PRIX UNITAIRE</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
                         <tr>
-                            <td><img width="30" src={{ asset('/storage/products/' . $product->image) }} alt="">
+                            <td>
+                                <div class="flex ">
+                                    <span><img width="30" src={{ asset('/storage/products/' . $product->image) }} alt=""></span>
+                                    <span>{{ $product->designation }}</span>
+                                </div>
                             </td>
-                            <td>{{ $product->designation }}</td>
                             <td>{{$product->stock." ".$product->unite}}</td>
+                            <td>{{$product->price}}</td>
                         </tr>
                     @endforeach
                 </tbody>

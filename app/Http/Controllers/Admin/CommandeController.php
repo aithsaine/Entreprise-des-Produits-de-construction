@@ -17,9 +17,14 @@ use App\Http\Controllers\Controller;
 
 class CommandeController extends Controller
 {
-    //
+    
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     public function index(Request $request)
     {
+        
         $client_id = $request->client ?? -1;
         $commandes = Commande::orderBy("client_id")->orderBy("date")->get();
         if ($request->has("client")) {

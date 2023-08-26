@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CommandeController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('admin.dashboard');
+    return view('landing');
 });
 
 Route::controller(ClientController::class)->group(function(){
@@ -53,3 +54,5 @@ Route::controller(PaymentController::class)->group(function(){
 Route::controller(AdminController::class)->group(function(){
     Route::get("admin/","index")->name("admin.dashboard");
 });
+Auth::routes(["register"=>false]);
+

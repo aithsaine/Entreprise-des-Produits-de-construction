@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content={{csrf_token()}}>
-    <title>Dashboard - Admin One Tailwind CSS Admin Dashboard</title>
+    <title>{{env("APP_NAME","rab sal")}} - Administration</title>
     <!-- Tailwind is included -->
     <link rel="stylesheet" href="{{ asset('./assets/css/main.css?v=1628755089081') }}">
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.9.95/css/materialdesignicons.min.css">
@@ -52,14 +52,14 @@
 
          <nav id="navbar-main" class="navbar is-fixed-top">
             <div class="navbar-brand">
-                <a class="navbar-item mobile-aside-button">
+                <a class="navbar-item mobile-aside-button" href="">
                     <span class="icon"><i class="mdi mdi-forwardburger mdi-24px"></i></span>
                 </a>
                 
             </div>
-
+<form action="{{route('logout')}}" id="lg-form" method="post">@csrf</form>
             <div class="-menu" id="navbar-menu">
-                <a class="navbar-item" href="#">
+                <a class="navbar-item cursor-pointer" onclick="document.getElementById('lg-form').submit()">
                     <span class="icon"><i class="mdi mdi-logout"></i></span>
                 </a>
             </div>
@@ -67,7 +67,7 @@
 
         <aside class="aside is-placed-left is-expanded">
             <div class="p-4">
-                <div class="flex items-center">
+                <div class="flex items-center p-4">
                     <img width="50" class="mt-2" src={{ asset('assets/imgs/logo.png') }} alt=""> <b
                         class="font-black flex text-center text-sky-200 p-4 ">RAB SAL</b>
                 </div>
