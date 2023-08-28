@@ -52,7 +52,7 @@
 
          <nav id="navbar-main" class="navbar is-fixed-top">
             <div class="navbar-brand">
-                <a class="navbar-item mobile-aside-button" href="">
+                <a class="navbar-item mobile-aside-button" href="#">
                     <span class="icon"><i class="mdi mdi-forwardburger mdi-24px"></i></span>
                 </a>
                 
@@ -67,10 +67,13 @@
 
         <aside class="aside is-placed-left is-expanded">
             <div class="p-4">
-                <div class="flex items-center p-4">
-                    <img width="50" class="mt-2" src={{ asset('assets/imgs/logo.png') }} alt=""> <b
+                <a href="/">
+
+                    <div class="flex items-center p-4">
+                        <img width="50" class="mt-2" src={{ asset('assets/imgs/logo.png') }} alt=""> <b
                         class="font-black flex text-center text-sky-200 p-4 ">RAB SAL</b>
-                </div>
+                    </div>
+                </a>
             </div>
             <div class="menu is-menu-main ">
                 <p class="menu-label">General</p>

@@ -27,4 +27,15 @@ class Commande extends Model
     {
         return $this->hasOne(Transport::class);
     }
+    public function total()
+    {
+        $total = 0;
+        foreach($this->items as $item)
+        {
+            $total += $item->price * $item->quantity;
+        }
+        $total += $this->transport?$this->transport->amount:0;
+
+        return $total;
+    }
   }
