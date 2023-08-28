@@ -34,7 +34,8 @@ class Commande extends Model
         {
             $total += $item->price * $item->quantity;
         }
-        $total += $this->transport?$this->transport->amount:0;
+        $total += $this->transport->amount??0;
+        
 
         return $total;
     }
