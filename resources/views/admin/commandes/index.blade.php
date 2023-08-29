@@ -46,7 +46,7 @@
                 @foreach ($commandes as $commande)
                     <fieldset class="border-2 border-sky-800 shadow m-5 p-5  rounded">
                         <legend class="ms-5 p-2">
-                            BON N° {{$commande->bon_number}}
+                            BON N° {{ $commande->bon_number }}
                         </legend>
                         <div class="flex justify-between p-5 mb-5">
                             <div>
@@ -152,6 +152,12 @@
 
                             <a href="{{ route('admin.commande.print', $commande->id) }}"><i class="mdi mdi-printer"></i>
                             </a>
+                            @if (!$commande->transport)
+                                {{-- the add transport button --}}
+                                <a title="ajouter le transport" href="#">
+                                    <i class="mdi mdi-ambulance"></i>
+                                </a>
+                            @endif
                         </div>
                     </fieldset>
                 @endforeach
@@ -164,7 +170,9 @@
         let btn = document.getElementById("btn-search");
         client_id_input = document.getElementById("client_id")
         btn.addEventListener('click', () => {
-            window.location.href = `http://localhost:8000/commandes?client=${client_id_input.value}`
+            let url = `{{ route('admin.commande.index', ['client' => 'clientNumber']) }}`
+            window.location.href = url.replace("clientNumber", client_id_input.value)
+
         })
     </script>
 @endsection
