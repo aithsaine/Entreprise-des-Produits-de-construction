@@ -14,8 +14,9 @@
                 <thead>
                     <tr>
                         <th class="text-left" >DESIGNATION</th>
-                        <th class="text-left">STOCK</th>
+                        <th class="text-left" >UNITE</th>
                         <th class="text-left">PRIX UNITAIRE</th>
+                        <th class="text-left">STOCK</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,8 +28,9 @@
                                     <span>{{ $product->designation }}</span>
                                 </div>
                             </td>
-                            <td>{{$product->stock." ".$product->unite}}</td>
+                            <td>{{$product->unite}}</td>
                             <td>{{$product->price}}</td>
+                            <td>{{$product->stock}}</td>
                         </tr>
                     @endforeach
                 </tbody>

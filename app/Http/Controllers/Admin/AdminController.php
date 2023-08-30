@@ -24,14 +24,15 @@ class AdminController extends Controller
         $earningsByMonth = DB::table("commandes")->leftJoin("transports","commandes.id","transports.commande_id")->leftJoin("items","commandes.id","=","items.commande_id")->select( DB::raw("year(commandes.date) as year"), DB::raw("month(commandes.date) as month"),DB::raw("sum(items.price*items.quantity) as amount"),DB::raw("sum(transports.amount) as trans"))->where('commandes.date', '>=', $sixMonthsAgo)->groupByRaw("month(commandes.date)")->groupByRaw("year(commandes.date)")->get();
             
         $values = [];
-
         foreach ($earningsByMonth as $earning) {
+            Carbon::setLocale("fr");
             $monthLabel = Carbon::createFromDate($earning->year, $earning->month)->format('F Y');
             $values[$monthLabel] = $earning->amount + $earning->trans ;
         }
 
 
         $months = array("", "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre");
+        
         $month_number = now()->format("n");
         $month = $months[$month_number];
         $count_clients = Client::whereRaw("last_name not like '%EXTERN'")->count();

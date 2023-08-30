@@ -62,7 +62,7 @@
                         <div class="text-center">{{$client->avancements()}} Dh </div>
                     </td>
                     <td data-label="le rest" class="p-2 whitespace-nowrap ">
-                        <div class="text-center">{{$client->purchases()-$client->avancements()}} Dh </div>
+                        <div class="text-center @if($client->purchases()-$client->avancements()>10) underline text-red-600 @endif">{{$client->purchases()-$client->avancements()}} Dh </div>
                     </td>
                     <td data-label="Actions" class="p-2 whitespace-nowrap lg:flex lg:justify-center ">
                         <div class="none">

@@ -197,6 +197,22 @@
                 });
             }
         }
+        function validateInput(input) {
+            // Remove any non-numeric and non-dot characters
+            input.value = input.value.replace(/[^0-9.]/g, '');
+
+            // Remove extra dots (allow only one dot)
+            const dotCount = (input.value.match(/\./g) || []).length;
+            if (dotCount > 1) {
+                input.value = input.value.replace(/\.+$/, '');
+            }
+        }
+        setInterval(() => {
+            let close = document.getElementById("close-alert")
+            if (close)
+                close.click()
+
+        }, 2000)
     </script>
     @yield('script')
 

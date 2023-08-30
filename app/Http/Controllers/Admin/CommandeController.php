@@ -97,6 +97,107 @@ class CommandeController extends Controller
         return back()->with("error_msg", "tu doit choisie au minimum un produit");
     }
 
+    public function edit($id)
+    {
+        $commande = Commande::find($id);
+        $getValue = function($product,$cmd_id){
+        $commande = Commande::find($cmd_id);
+            $val = null;
+            foreach($commande->items as $item)
+            {
+                if ($item->product_id==$product)
+                {
+                    $val = $item->price;
+                    break;
+                }
+            }
+            return $val;
+        };
+        $getQuantity = function($product,$cmd_id){
+        $commande = Commande::find($cmd_id);
+        $val = null;
+        foreach($commande->items as $item)
+        {
+            if ($item->product_id==$product)
+            {
+                $val = $item->quantity;
+                break;
+            }
+        }
+        return $val;
+
+
+        };
+        $products  = Product::all();
+        return view("admin.commandes.edit",compact("commande","products","getValue","getQuantity"));
+    }
+
+
+    public function update($id,Request $request)
+    {
+        $request->validate([
+            "date" => "required|date",
+            "bon"=>"required|regex:/\d/",
+        ]);
+        $qts = [];
+        $pus = [];
+        foreach ($request->input() as $key => $value) {
+            if (preg_match("/^qte_/", $key) && $value != null)
+                $qts[preg_replace("/\D/", '', $key)] = $value;
+        }
+        foreach ($request->input() as $key => $value) {
+            if (preg_match("/^pu_/", $key) && $value != null)
+                $pus[preg_replace("/\D/", '', $key)] = $value;
+        }
+        if (count($qts) >= 1) {
+            $commande = Commande::find($id);
+            $commande->date = $request->date;
+            $commande->bon_number=$request->bon;
+            $commande->save();
+            if ($request->transport > 0) {
+                if($commande->transport){
+
+                    $trs = Transport::where("commande_id",$commande->id)->first();
+                    $trs->amount = $request->transport;
+                    $trs->save();
+                }
+                Transport::create([
+                    "commande_id"=>$commande->id,
+                    "amount"=>$request->transport
+                ]);
+            }
+            else{
+                Transport::where("commande_id",$commande->id)->delete();
+
+            }
+            Item::where("commande_id",$commande->id)->delete();
+            foreach ($qts as $key => $value) {
+                try {
+
+                    Item::create([
+                        "product_id" => $key,
+                        "price" => $pus[$key],
+                        "quantity" => $value,
+                        "commande_id" => $commande->id
+                    ]);
+                    $pr = Product::find($key);
+                    $pr->stock = $pr->stock - $value;
+                    $pr->save();
+                } catch (Exception $er) {
+                }
+            }
+            return redirect()->route("admin.commande.index")->with("success_msg", "la commande N° $id est ajour avec success");
+        }
+        return back()->with("error_msg", "tu doit choisie au minimum un produit");
+
+    }
+
+
+
+
+
+
+
     public function print($commande)
     {
         $cmd = Commande::find($commande);
@@ -104,6 +205,7 @@ class CommandeController extends Controller
         $pdf = Pdf::loadView('admin.commandes.commande', compact("cmd", "total"));
         return $pdf->stream("RABSAL COMMANDE N° {$commande}.pdf");
     }
+
 
 
   

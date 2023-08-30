@@ -44,6 +44,8 @@ Route::controller(CommandeController::class)->group(function()
     Route::get("/commande/{client}/create","create")->name("admin.commande.create");
     Route::post("/commande/commander/{client}",'commander')->name("admin.commande.commander");
     Route::get("/commande/{commande}/print","print")->name("admin.commande.print");
+    Route::get("/commande/{id}/edit",'edit')->name("admin.commande.edit");
+    Route::patch("/commande/{id}/update","update")->name("admin.commande.update");
 });
 
 Route::controller(PaymentController::class)->group(function(){
