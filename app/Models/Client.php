@@ -23,8 +23,8 @@ class Client extends Model
             foreach ($commande->items as $item) {
                 $total += $item->quantity * $item->price;
             }
-            if( $commande->transport)
-            $total += $commande->transport->amount;
+            if ($commande->transport)
+                $total += $commande->transport->amount;
         }
         return $total;
     }
@@ -32,12 +32,10 @@ class Client extends Model
     public function avancements()
     {
         $total = 0;
-        $payments = Payment::where("client_id",$this->attributes["id"])->get();
-        foreach($payments as $payment){
-            $total+=$payment->amount;
-
+        $payments = Payment::where("client_id", $this->attributes["id"])->get();
+        foreach ($payments as $payment) {
+            $total += $payment->amount;
         }
         return $total;
     }
-    
 }

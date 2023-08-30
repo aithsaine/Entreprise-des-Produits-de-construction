@@ -24,7 +24,7 @@
                         <tr>
                             <td>
                                 <div class="flex ">
-                                    <span><img width="30" src={{ asset('/storage/products/' . $product->image) }} alt=""></span>
+                                    <span><img width="30" src={{ asset('storage/products/' . $product->image) }} alt=""></span>
                                     <span>{{ $product->designation }}</span>
                                 </div>
                             </td>

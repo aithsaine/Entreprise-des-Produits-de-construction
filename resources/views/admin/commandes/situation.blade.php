@@ -104,7 +104,7 @@
         <tfoot>
             <tr class="border-2">
                 <th colspan="4">Total D'avancements</th>
-                <th>{{$client->purchases()}} Dh</th>
+                <th>{{$client->avancements()}} Dh</th>
             </tr>
         </tfoot>
 
