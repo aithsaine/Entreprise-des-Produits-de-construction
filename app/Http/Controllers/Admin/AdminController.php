@@ -20,14 +20,14 @@ class AdminController extends Controller
 
     public function index()
     {
-        $sixMonthsAgo = Carbon::now()->subMonths(6);
-        $earningsByMonth = DB::table("commandes")->leftJoin("transports","commandes.id","transports.commande_id")->leftJoin("items","commandes.id","=","items.commande_id")->select( DB::raw("year(commandes.date) as year"), DB::raw("month(commandes.date) as month"),DB::raw("sum(items.price*items.quantity) as amount"),DB::raw("sum(transports.amount) as trans"))->where('commandes.date', '>=', $sixMonthsAgo)->groupByRaw("month(commandes.date)")->groupByRaw("year(commandes.date)")->get();
+        $sixMonthsAgo = Carbon::now()->subMonths(6)->format("Y-m-d");
+        $earningsByMonth = DB::table("commandes")->leftJoin("transports","commandes.id","transports.commande_id")->leftJoin("items","commandes.id","=","items.commande_id")->where("commandes.date",">=",$sixMonthsAgo)->select( DB::raw("year(commandes.date) as year"), DB::raw("month(commandes.date) as month"),DB::raw("sum(items.price*items.quantity) as amount"),DB::raw("sum(transports.amount) as trans"))->groupBy("year")->groupBy("month")->orderByRaw("year(commandes.date)")->orderByRaw("month(commandes.date)")->get();
             
         $values = [];
         foreach ($earningsByMonth as $earning) {
             Carbon::setLocale("fr");
             $monthLabel = Carbon::createFromDate($earning->year, $earning->month)->format('F Y');
-            $values[$monthLabel] = $earning->amount + $earning->trans ;
+            $values[$monthLabel] = $earning->amount ;
         }
 
 

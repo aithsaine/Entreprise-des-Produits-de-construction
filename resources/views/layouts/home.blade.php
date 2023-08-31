@@ -29,7 +29,11 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/landing.css" rel="stylesheet">
 
-
+<style>
+    .bg-custom{
+    background-color: #F9A826 !important
+}
+</style>
 </head>
 
 <body>

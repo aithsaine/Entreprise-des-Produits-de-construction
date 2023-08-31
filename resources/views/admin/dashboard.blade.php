@@ -96,6 +96,7 @@
 @section('script')
     <script>
         const labels = @json($values);
+        console.log(labels)
         am5.ready(function() {
 
             // Create root element
@@ -242,5 +243,7 @@
             chart.appear(1000, 100);
 
         }); // end am5.ready()
-    </script>
+
+
+        </script>
 @endsection
