@@ -9,7 +9,7 @@
 
 ### Demonstration:
 
-![Demo](demo/dashboard.png)
+![Demo](demo/dashboard.PNG)
 ![Demo](demo/home.PNG)
 ![Demo](demo/log.PNG)
 ![Demo](demo/cmds.PNG)
