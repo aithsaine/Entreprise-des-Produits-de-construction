@@ -80,8 +80,8 @@
                     </svg>
                 </span>
                 <div>
-                    <p class="text-lg font-semibold">Commands</p>
-                    <p class="text-sm">Total commands</p>
+                    <p class="text-lg font-semibold">Commandes</p>
+                    <p class="text-sm">du mois {{ $month }} </p>
                 </div>
             </div>
             <p class="text-2xl mt-4 font-bold">{{ count($current_commands) }}</p>

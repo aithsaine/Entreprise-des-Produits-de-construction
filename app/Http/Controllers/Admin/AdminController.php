@@ -20,6 +20,7 @@ class AdminController extends Controller
 
     public function index()
     {
+        $commandes_count = Commande::all()->all();
         $sixMonthsAgo = Carbon::now()->subMonths(6)->format("Y-m-d");
         $earningsByMonth = DB::table("commandes")->leftJoin("transports","commandes.id","transports.commande_id")->leftJoin("items","commandes.id","=","items.commande_id")->where("commandes.date",">=",$sixMonthsAgo)->select( DB::raw("year(commandes.date) as year"), DB::raw("month(commandes.date) as month"),DB::raw("sum(items.price*items.quantity) as amount"),DB::raw("sum(transports.amount) as trans"))->groupBy("year")->groupBy("month")->orderByRaw("year(commandes.date)")->orderByRaw("month(commandes.date)")->get();
             
@@ -41,6 +42,6 @@ class AdminController extends Controller
         foreach ($current_commands as $cmd) {
             $chiffre += $cmd->total();
         }
-        return view("admin.dashboard", compact("month", "count_clients", 'current_commands', "chiffre", "values"));
+        return view("admin.dashboard", compact("month", "count_clients", 'current_commands', "chiffre", "values","commandes_count"));
     }
 }
